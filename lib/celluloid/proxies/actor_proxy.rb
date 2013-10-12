@@ -22,8 +22,8 @@ module Celluloid
       @mailbox.alive?
     end
 
-    def dead?
-      !alive?
+    def supervisor
+      links.detect {|link| Celluloid::SupervisionGroup === link }
     end
 
     # Terminate the associated actor
